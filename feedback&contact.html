@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content="contact me" />
+    <meta property="og:description" content="A feedback and contact page for my homepage">
+    <meta name="author" content="Andy Dai" />
+    <title>Feedback and Contact</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
+</head>
+
+<body>
+    <picture>
+        <img class="bg-img" src="assets/img/park.jpg" alt="Chengdu Renmin Park picture" loading="lazy">
+    </picture>
+    <main class="maincontent">
+        <section class=" maincontent-inner whitetext">
+            <nav>
+                <a id="Home" href="index.html" class="whitetext">Home</a>&nbsp;&nbsp;&nbsp;<a id="Hometown" href="hometown.html" class="whitetext">WhereImFrom</a>&nbsp;&nbsp;&nbsp;<a id="Feedback" href="feedback&contact.html" class="whitetext">FeedBack&Contact</a>
+            </nav>
+            <section class="forgrid">
+                <h1>Please provide feedback&advice</h1>
+                <form id="uploadFormExperience" action="http://example.com" method="post">
+                    <label id="feeling" for="feedback">How's your experience with this website?</label>
+                    <input list="user-feedback" id="feedback" name="feedback" />
+                    <datalist id="user-feedback">
+                        <option value="Fantastic"></option>
+                        <option value="Excellent"></option>
+                        <option value="Good"></option>
+                        <option value="Bad"></option>
+                        <option value="Awful"></option>
+                    </datalist><br />
+                    <label for="experience">Tell us your experience in details:</label><br />
+                    <textarea id="experience" name="experience" rows="14" cols="90"></textarea><br />
+                    <br />
+                    <button id="submitButtonText" class="btn-base" type="submit">Submit</button>
+                </form>
+                <form id="uploadForm" action="http://example.com" method="post">
+                    <h3>Upload your contact information</h3>
+                    <fieldset>
+                        <legend>Upload <strong>HERE</strong></legend>
+                        <input type="file" id="fileInput" accept=".pdf" />
+                    </fieldset>
+                    <br />
+                    <button id="submitButton" class="btn-base" type="submit">Submit</button>
+                </form>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>
