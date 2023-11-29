@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content="contact me" />
+    <meta property="og:description" content="A feedback and contact page for my homepage">
+    <meta name="author" content="Andy Dai" />
+    <title>Feedback and Contact</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/contact.css" rel="stylesheet" />
+    <script src="js/form.js"></script> 
+    <style>
+    .flash-error {
+        animation: flash 0.3s ease-in-out;
+    }
+
+    @keyframes flash {
+        0%, 100% { background-color: #fff; }
+        50% { background-color: #ffdddd; }
+    }
+
+    .warning {
+        color: orange;
+    }
+
+    .error {
+        color: red;
+    }
+
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700"/>
+</head>
+
+<body>
+    <picture>
+        <img class="bg-img" src="assets/img/park.jpg" alt="Chengdu Renmin Park picture" loading="lazy">
+    </picture>
+    <main class="maincontent">
+        <section class=" maincontent-inner whitetext">
+            <nav>
+                <a id="Home" href="index.html" class="whitetext">Home</a>&nbsp;&nbsp;&nbsp;<a id="Hometown" href="hometown.html" class="whitetext">WhereImFrom</a>&nbsp;&nbsp;&nbsp;<a id="Feedback" href="feedback&contact.html" class="whitetext">FeedBack&Contact</a>&nbsp;&nbsp;&nbsp;<a id="Contactform" href="contactform.html" class="whitetext">Contactform</a>
+            </nav>
+            <section class="forgrid">
+                <h1>Contact Form</h1>
+                <form action="https://httpbin.org/post" method="POST" id="contactForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" class="flash-error" name="name" required pattern="[a-zA-Z\s]+" placeholder="Enter your name here">
+                    <div style="display: flex; justify-content: space-around;">
+                        <output class="error" name="nameError">error-message-if-any</output>
+                        <output class="warning" name="nameInfo">info-message-if-any</output>
+                    </div>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="flash-error" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter your email here">
+                    <div style="display: flex; justify-content: space-around;">
+                        <output class="error" name="emailError">error-message-if-any</output>
+                        <output class="warning" name="emailInfo">info-message-if-any</output>
+                    </div>
+                    
+                    <label for="comments">Comments:</label>
+                    <textarea id="comments" class="flash-error" name="comments" rows="14" cols="90" required minlength="0" maxlength="200" title="Comments need be 0-200 characters long and contain only typical characters." placeholder="Enter your comments"></textarea>
+                    <div style="display: flex; justify-content: space-around;">
+                        <output class="error" name="commentsError">error-message-if-any</output>
+                        <output class="warning" name="commentsInfo">info-message-if-any</output>
+                    </div>
+
+                    <button type="submit" class="btn-base" value="submit">Submit</button>
+                    <input type="hidden"  name="possible_bot" value="true">
+
+                    <input name="form-errors" class="flash-error">
+                </form>                
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>
