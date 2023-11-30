@@ -1,3 +1,33 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('text-color-toggle');
+    const textSection = document.querySelector('section');
+
+    function applyTheme(theme) {
+        document.documentElement.style.setProperty('--the-theme', theme);
+        if (theme === 'white') {
+            textSection.classList.add('black-text');
+            textSection.classList.remove('whitetext');
+        } else {
+            textSection.classList.add('whitetext');
+            textSection.classList.remove('black-text');
+        }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = getComputedStyle(document.documentElement).getPropertyValue('--the-theme').trim();
+        const newTheme = currentTheme === 'white' ? 'black' : 'white';
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+});
+
+
+
 window.addEventListener('DOMContentLoaded', () => {
     let name_error = document.querySelector('output[name="nameError"]');
     let name_info = document.querySelector('output[name="nameInfo"]');
