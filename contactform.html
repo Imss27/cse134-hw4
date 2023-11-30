@@ -10,27 +10,56 @@
     <title>Feedback and Contact</title>
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/contact.css" rel="stylesheet" />
-    <script src="js/form.js"></script> 
     <style>
-    .flash-error {
-        animation: flash 0.3s ease-in-out;
-    }
+        form {
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(11, 11, 11);
+                padding: 5px 25px;
+        }
+        
+        @keyframes flash {
+                50% {background: rgb(229, 255, 0)(102, 13, 13);}
+                100% {background: rgb(9, 9, 9);}
+            }
 
-    @keyframes flash {
-        0%, 100% { background-color: #fff; }
-        50% { background-color: #ffdddd; }
-    }
+        @keyframes fade {
+            0%, 100% {opacity: 0;}
+            50% {opacity: 1;}
+        }
 
-    .warning {
-        color: orange;
-    }
 
-    .error {
-        color: red;
-    }
+        .warning {
+            color: orange;
+        }
 
+        .error-message {
+            color: red;
+            opacity: 1;
+            animation: fade 2s cubic-bezier(0.000, 0.957, 0.250, 1.000);
+            transition: opacity 2s ease-out;
+        }
+
+        .invalid {
+            animation-name: flash;
+            animation-duration: 0.5s;
+            border: 2px rgb(222, 109, 109) solid;
+        }
+
+        input, textarea {
+            border: 2px black solid;
+            &:user-invalid {
+                border: 2px rgb(167, 23, 23) solid;
+            }
+
+            &:user-valid {
+                border: 2px rgb(92, 201, 92) solid;
+            }
+
+        }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700"/>
+    <script src="js/form.js"></script> 
 </head>
 
 <body>
@@ -46,30 +75,27 @@
                 <h1>Contact Form</h1>
                 <form action="https://httpbin.org/post" method="POST" id="contactForm">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" class="flash-error" name="name" required pattern="[a-zA-Z\s]+" placeholder="Enter your name here">
-                    <div style="display: flex; justify-content: space-around;">
-                        <output class="error" name="nameError">error-message-if-any</output>
-                        <output class="warning" name="nameInfo">info-message-if-any</output>
-                    </div>
+                    <input type="text" id="name" name="name" required pattern="[a-zA-Z\- ]*" placeholder="Enter your name here">
+                    <output name="nameError"></output>
+                    <output name="nameInfo"></output>
+                    
 
                     <label for="email">Email:</label>
-                    <input type="email" id="email" class="flash-error" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter your email here">
-                    <div style="display: flex; justify-content: space-around;">
-                        <output class="error" name="emailError">error-message-if-any</output>
-                        <output class="warning" name="emailInfo">info-message-if-any</output>
-                    </div>
+                    <input type="email" id="email" name="email" required  placeholder="Enter your email here">
+                    <output name="emailError"></output>
+                    <output name="emailInfo"></output>
+
                     
                     <label for="comments">Comments:</label>
-                    <textarea id="comments" class="flash-error" name="comments" rows="14" cols="90" required minlength="0" maxlength="200" title="Comments need be 0-200 characters long and contain only typical characters." placeholder="Enter your comments"></textarea>
-                    <div style="display: flex; justify-content: space-around;">
-                        <output class="error" name="commentsError">error-message-if-any</output>
-                        <output class="warning" name="commentsInfo">info-message-if-any</output>
-                    </div>
+                    <textarea id="comments" name="comments" rows="14" cols="90" required maxlength="200" title="Comments need be 0-200 characters long and contain only typical characters." placeholder="Enter your comments"></textarea>
+                    <output name="commentsError"></output>
+                    <output name="commentsInfo"></output>
+                    
 
                     <button type="submit" class="btn-base" value="submit">Submit</button>
                     <input type="hidden"  name="possible_bot" value="true">
 
-                    <input name="form-errors" class="flash-error">
+                    <input type="hidden" name="form-errors">
                 </form>                
             </section>
         </section>
